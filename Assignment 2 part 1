@@ -1,0 +1,261 @@
+> x1 = c(TRUE, FALSE, FALSE, TRUE)
+> x2 = c(0, -1, 5, 6, 7.5, 9)
+> x3 = c("a1", "a2", "b1", "b2")
+> ?sum
+> sum(x1)
+[1] 2
+> sum(x2)
+[1] 26.5
+> sum(x3)
+Error in sum(x3) : invalid 'type' (character) of argument
+> ?prod
+> prod(x1)
+[1] 0
+> prod(x2)
+[1] 0
+> prod(x3)
+Error in prod(x3) : invalid 'type' (character) of argument
+> ?max
+> max(x1)
+[1] 1
+> max(x2)
+[1] 9
+> max(x3)
+[1] "b2"
+> ?min
+> minX(x1)
+Error in minX(x1) : could not find function "minX"
+> min(x2)
+[1] -1
+> Min(x3)
+Error in Min(x3) : could not find function "Min"
+> ?which.max
+> which.max(x1)
+[1] 1
+> which.max(x2)
+[1] 6
+> which.max(x3)
+integer(0)
+Warning message:
+In which.max(x3) : NAs introduced by coercion
+> ?which.min
+> which.min(x1)
+[1] 2
+> which.min(x2)
+[1] 2
+> which.min(x3)
+integer(0)
+Warning message:
+In which.min(x3) : NAs introduced by coercion
+> ?range
+> range(X1)
+Error: object 'X1' not found
+> range(x2)
+[1] -1  9
+> range(x3)
+[1] "a1" "b2"
+> ?length
+> length(x1)
+[1] 4
+> length(X2)
+Error: object 'X2' not found
+> length(x3)
+[1] 4
+> length(x2)
+[1] 6
+> ?mean
+> mean(x1)
+[1] 0.5
+> mean(x2)
+[1] 4.416667
+> mean(x3)
+[1] NA
+Warning message:
+In mean.default(x3) : argument is not numeric or logical: returning NA
+> ?median
+> median(x1)
+[1] 0.5
+> median(x2)
+[1] 5.5
+> median(x3)
+[1] NA
+Warning message:
+In mean.default(sort(x, partial = half + 0L:1L)[half + 0L:1L]) :
+  argument is not numeric or logical: returning NA
+> ?round
+> round(x1,n)
+Error: object 'n' not found
+> round(x1,2)
+[1] 1 0 0 1
+> round(x2,3)
+[1]  0.0 -1.0  5.0  6.0  7.5  9.0
+> round(x3, 1)
+Error in round(x3, 1) : non-numeric argument to mathematical function
+> ?rev
+> rev(x1)
+[1]  TRUE FALSE FALSE  TRUE
+> rev(x2)
+[1]  9.0  7.5  6.0  5.0 -1.0  0.0
+> rev(x3)
+[1] "b2" "b1" "a2" "a1"
+> ?sort
+> sort(x1)
+[1] FALSE FALSE  TRUE  TRUE
+> sort(x2)
+[1] -1.0  0.0  5.0  6.0  7.5  9.0
+> sort(x3)
+[1] "a1" "a2" "b1" "b2"
+> ?rank
+> rank(x1)
+[1] 3.5 1.5 1.5 3.5
+> rank(x2)
+[1] 2 1 3 4 5 6
+> rank(x3)
+[1] 1 2 3 4
+> log(x1, 10)
+[1]    0 -Inf -Inf    0
+> log(x2,10)
+[1]      -Inf       NaN 0.6989700 0.7781513 0.8750613 0.9542425
+Warning message:
+NaNs produced 
+> log(x3,10)
+Error in log(x3, 10) : non-numeric argument to mathematical function
+> ?scale
+> scale(x1)
+           [,1]
+[1,]  0.8660254
+[2,] -0.8660254
+[3,] -0.8660254
+[4,]  0.8660254
+attr(,"scaled:center")
+[1] 0.5
+attr(,"scaled:scale")
+[1] 0.5773503
+> scale(x2)
+           [,1]
+[1,] -1.0892353
+[2,] -1.3358546
+[3,]  0.1438613
+[4,]  0.3904806
+[5,]  0.7604095
+[6,]  1.1303385
+attr(,"scaled:center")
+[1] 4.416667
+attr(,"scaled:scale")
+[1] 4.054833
+> scale(x3)
+Error in colMeans(x, na.rm = TRUE) : 'x' must be numeric
+> ?pmin
+> y = 0,1,2,3
+Error: unexpected ',' in "y = 0,"
+> y = c(0,1,2,3)
+> pmin(x1, y)
+[1] 0 0 0 1
+> pmin(x2, y)
+[1]  0 -1  2  3  0  1
+Warning message:
+In pmin(x2, y) : an argument will be fractionally recycled
+> pmin(x3, y)
+[1] "0" "1" "2" "3"
+> pmax(x1,y)
+[1] 1 1 2 3
+> pmax(x2,y)
+[1] 0.0 1.0 5.0 6.0 7.5 9.0
+Warning message:
+In pmax(x2, y) : an argument will be fractionally recycled
+> pmax(x3, y)
+[1] "a1" "a2" "b1" "b2"
+> cumsum(x1)
+[1] 1 1 1 2
+> cumsum(x2)
+[1]  0.0 -1.0  4.0 10.0 17.5 26.5
+> cumsum(x3)
+[1] NA NA NA NA
+Warning message:
+NAs introduced by coercion 
+> cumprod(x1)
+[1] 1 0 0 0
+> cumprod(x2)
+[1] 0 0 0 0 0 0
+> cumprod(x3)
+[1] NA NA NA NA
+Warning message:
+NAs introduced by coercion 
+> match(x1,y)
+[1] 2 1 1 2
+> match(x2,y)
+[1]  1 NA NA NA NA NA
+> match(x3,y)
+[1] NA NA NA NA
+> which (x1=1)
+Error in which(x1 = 1) : unused argument (x1 = 1)
+> which(x1==1)
+[1] 1 4
+> which(x2==1)
+integer(0)
+> which(x3==1)
+integer(0)
+> na.omit(x1)
+[1]  TRUE FALSE FALSE  TRUE
+> na.omit(x2)
+[1]  0.0 -1.0  5.0  6.0  7.5  9.0
+> na.omit(x3)
+[1] "a1" "a2" "b1" "b2"
+> na.fail(x1)
+[1]  TRUE FALSE FALSE  TRUE
+> na.fail(x2)
+[1]  0.0 -1.0  5.0  6.0  7.5  9.0
+> na.fail(x3)
+[1] "a1" "a2" "b1" "b2"
+> unique(x1)
+[1]  TRUE FALSE
+> unique(x2)
+[1]  0.0 -1.0  5.0  6.0  7.5  9.0
+> unique(x3)
+[1] "a1" "a2" "b1" "b2"
+> table(X)
+Error in table(X) : object 'X' not found
+> table(x1)
+x1
+FALSE  TRUE 
+    2     2 
+> table(x2)
+x2
+ -1   0   5   6 7.5   9 
+  1   1   1   1   1   1 
+> table(x3)
+x3
+a1 a2 b1 b2 
+ 1  1  1  1 
+> table(x1,y)
+       y
+x1      0 1 2 3
+  FALSE 0 1 1 0
+  TRUE  1 0 0 1
+> table(x2,y)
+Error in table(x2, y) : all arguments must have the same length
+> table(x3,y)
+    y
+x3   0 1 2 3
+  a1 1 0 0 0
+  a2 0 1 0 0
+  b1 0 0 1 0
+  b2 0 0 0 1
+> subset(x1)
+Error in subset.default(x1) : 
+  argument "subset" is missing, with no default
+> subset(x1,x1==1)
+[1] TRUE TRUE
+> subset(x2,x2<0)
+[1] -1
+> subset(x3, x3==b1)
+Error in subset.default(x3, x3 == b1) : object 'b1' not found
+> subset(x3, x3==0)
+character(0)
+> sample(x1,1)
+[1] FALSE
+> sample(x2,3)
+[1]  0 -1  5
+> sample (x3,4)
+[1] "b2" "b1" "a1" "a2"
+> 
