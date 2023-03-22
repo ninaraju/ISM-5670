@@ -1,0 +1,86 @@
+> Formaldehyde
+  carb optden
+1  0.1  0.086
+2  0.3  0.269
+3  0.5  0.446
+4  0.6  0.538
+5  0.7  0.626
+6  0.9  0.782
+> #1(a)
+> Formaldehyde[3,]
+  carb optden
+3  0.5  0.446
+> #1(b)
+> Formaldehyde$carb
+[1] 0.1 0.3 0.5 0.6 0.7 0.9
+> #1(c)
+> plot(Formaldehyde$optden,Formaldehyde$carb)
+> #2(a)
+> dim(USArrests)
+[1] 50  4
+> #2(b)
+> median(USArrests[,2])
+[1] 159
+> median(USArrests[,3])
+[1] 66
+> median(USArrests[,4])
+[1] 20.1
+>
+> USArrests
+> #2(a)
+> dim(USArrests)
+[1] 50  4
+> #2(b)
+> median(USArrests[,2])
+[1] 159
+> median(USArrests[,3])
+[1] 66
+> median(USArrests[,4])
+[1] 20.1
+> #2(c0)
+> ?state.abb
+> state.abb[match(rownames(USArrests),state,name)]
+Error in match(rownames(USArrests), state, name) : 
+  object 'state' not found
+> state.abb[match(rownames(USArrests),state.name)]
+ [1] "AL" "AK" "AZ" "AR" "CA" "CO" "CT" "DE" "FL" "GA" "HI" "ID" "IL" "IN" "IA" "KS" "KY" "LA" "ME" "MD" "MA" "MI"
+[23] "MN" "MS" "MO" "MT" "NE" "NV" "NH" "NJ" "NM" "NY" "NC" "ND" "OH" "OK" "OR" "PA" "RI" "SC" "SD" "TN" "TX" "UT"
+[45] "VT" "VA" "WA" "WV" "WI" "WY"
+> rownames(USArrests)=state.abb[match(rownames(USArrests),state.name)]
+> USArrests
+> #2(d)
+> USArrests$UrbanPop>77
+ [1] FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+[19] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE
+[37] FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+> mean(USArrests$Murder[USArrests$UrbanPop>77])
+> #2(e)
+> mean(USArrests$Murder[USArrests$UrbanPop<50])
+[1] 8.25
+>
+> 
+> #3(a)
+> chicwts300p = chickwts[chickwts$weight.300,]
+> #3(b)
+> chickwtsLinseed =chickwts[chickwts$feed =='linseed',]
+> chickwtsLinseed 
+> #3(d)
+> chickwtsNoLinseed =chickwts[chickwts$feed!= 'linseed',]
+> mean(chickwtsNoLinseed)
+> #3(c)
+> mean(chickwtsLinseed$weight)
+>
+> #4(a)
+> dim(cars)
+[1] 50  2
+> colnames(cars)
+[1] "speed" "dist" 
+>
+> #4(b)
+> cars20=cars[cars$speed==20,]
+> mean(cars20$dist)
+[1] 50.4
+> #4(c)
+> plot(cars$speed,cars$dist)
+
+
