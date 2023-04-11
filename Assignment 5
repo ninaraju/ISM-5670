@@ -1,0 +1,92 @@
+# Set up variables for the game
+totals <- c(5, 6, 7, 8, 9)
+end_values <- c(11, 12)
+total_throws <- numeric()
+
+# Simulate the game 1000 times
+for (i in 1:1000) {
+  total <- 0
+  throws <- 0
+  while (TRUE) {
+    # Roll the dice
+    dice <- sample(1:6, 2, replace = TRUE)
+    total_roll <- sum(dice)
+    
+    # Check if the game should end
+    if (total_roll %in% totals) {
+      throws <- throws + 1
+      break
+    } else if (total_roll %in% end_values) {
+      throws <- throws + 1
+      total_throws[i] <- throws
+      break
+    } else {
+      throws <- throws + 1
+    }
+  }
+}
+
+# Calculate the average number of dice throws per game
+mean(total_throws)
+
+# Load TurtleGraphics
+library(TurtleGraphics)
+
+# Initialize turtle
+turtle_init()
+
+# Draw square
+for (side in 1:4) {
+  turtle_forward(distance = 50)
+  turtle_left(angle = 90)
+}
+
+# Load TurtleGraphics
+library(TurtleGraphics)
+
+# Initialize turtle
+turtle_init()
+
+# Draw triangle
+for (side in 1:3) {
+  turtle_forward(distance = 50)
+  turtle_left(angle = 120)
+}
+
+# Load TurtleGraphics
+library(TurtleGraphics)
+
+# Initialize turtle
+turtle_init()
+
+# Set up variables
+max_moves <- 500
+moves <- 0
+
+# Move the turtle randomly
+while (moves < max_moves) {
+  # Roll the dice
+  dice <- sample(1:6, 1)
+  
+  # Move the turtle based on the dice roll
+  if (dice == 1) {
+    turtle_forward(distance = 10)
+  } else if (dice == 2) {
+    turtle_right(angle = 90)
+    turtle_forward(distance = 10)
+  } else if (dice == 3) {
+    turtle_backward(distance = 10)
+  } else if (dice == 4) {
+    turtle_left(angle = 90)
+    turtle_forward(distance = 10)
+  } else if (dice == 5) {
+    # Do nothing
+  } else {
+    # End the game
+    break
+  }
+  
+  # Increment moves
+  moves <- moves + 1
+}
+
