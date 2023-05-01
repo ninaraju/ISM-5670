@@ -1,0 +1,87 @@
+#Question 1 
+
+library(stringr)
+library(R.utils)
+library(rvest)
+library(dplyr)
+library(xml2)
+
+
+restaurantpage = "https://www.yelp.com/search?find_desc=American+%28Traditional%29&find_loc=Downtown+Detroit%2C+Detroit%2C+MI&ns=1"
+restaurant = read_html(restaurantpage)
+restaurant
+
+res_rank = restaurant %>%
+  html_nodes('body') %>%
+  xml_find_all("//a[contains(@class, 'css-1m051bw')]") %>%
+  html_text()
+res_rank
+res_rank=res_rank[5:14]
+res_rank
+
+res_rank = restaurant %>%
+  html_nodes('body') %>%
+  xml_find_all("//span[contains(@class, 'css-legxyvc;)]") %>%
+  html_text()
+res_rank
+remove=grep("food" , res_rank)
+remove
+res_rank=res_rank[-remove]
+res_rank
+remove=grep("traditional American" , res_rank)
+remove
+res_rank=res_rank[-remove]
+res_rank
+
+#Question 2
+
+dogfoodpage = "https://www.chewy.com/b/dry-food-294"
+dogfood = read_html(dogfoodpage)
+dogfood
+
+dogfood_name = dogfood %>%
+  xml_find_all("//div[contains(@class, 'kib-product-title_text')]") %>%
+  html_text()
+dogfood_name
+
+dogfood_name = dogfood %>%
+  html_nodes('h2') %>%
+  html_nodes('a') %>%
+  html_text()
+dogfood_name
+
+dogfood_brand = dogfood %>%
+  html_nodes ('strong') %>%
+  html_text ()
+dogfood_brand
+
+dogfood_price = dogfood %>%
+  xml_find_all("//div[contains(@class, 'kib-product-price--md')]") %>%
+  html_text()
+dogfood_price
+
+pos1=grep("Chewy", dogfood_price)
+pos1
+chewy_price=dogfood_price[pos1]
+chewy_price=chewy_price[1:38]
+chewy_price=gsub("Chewy Price", "", x=chewy_price)
+chewy_price
+
+dogfood_info=data.frame(brand=dogfood_brand, dogfood_name=dogfood_name, chewy_price=chewy_price)
+dogfood_info$auto_price=""
+pos3 = which (dogfood_brand %in% c("Dog Chow", "Gentle Giants", "Pedigree" , "Moist & Meaty"))
+pos3
+dogfood_info$auto_price[pos3] = 'NA'
+
+pos2=grep("Auto", dogfood_price)
+pos2
+auto_price=dogfood_price[pos2]
+auto_price
+auto_price=auto_price [1:(38-length(pos3))]
+auto_price=gsub("Autoship Price", "", x=auto_price)
+auto_price
+
+dogfood_info$auto_price[dogfood_info$auto_price! = "NA"]=auto_price
+
+View(dogfood_info)
+  
